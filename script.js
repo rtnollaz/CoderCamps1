@@ -1,33 +1,24 @@
-<HTML>
-<HEAD>
-<SCRIPT>
-function countWords(str){
-   var count = 0;
-   words = str.split(" "); 
-    for (i=0 ; i < words.length ; i++){
-       // inner loop -- do the count
-       if (words[i] != "")
-          count += 1; 
+function myFunction(){
+var x = document.getElementById("textBox").value;
+var AverageWords = 0;
+var SpaceCounter = 0;
+var SentenceCounter = 0;
+var WordCounter = 1;
+
+for(var i=0; i<=x.length; i++){
+  if (x[i] == ' ') {
+     SpaceCounter++;
+     WordCounter++;
     }
 
-   document.theForm.results.value = 
-      "There are " +
-      count +
-      " words in the text string you entered!";
-}
-</SCRIPT>
-</HEAD>
-<BODY>
-<FORM name="theForm">
-Enter a text string:
-<TEXTAREA name=inStr rows=5 cols=90>
-</TEXTAREA>
-<INPUT type=button value="Count Words" onClick="countWords(document.theForm.inStr.value)";>
-<INPUT type=button name="theButton" value="Clear Results" onClick='document.theForm.results.value=""';>
-Results<br>
-<TEXTAREA name=results rows=5 cols=90>
-</TEXTAREA>
+    if (x[i] == '.' || x[i] == '?' || x[i] == '!') {
+                SentenceCounter++;
+            }
 
-</FORM>  
-</BODY>
-</HTML>
+   }
+AverageWords = WordCounter/SentenceCounter;
+document.getElementById("row1").innerHTML = 'There are ' + AverageWords + ' average words in this text.';
+document.getElementById("row2").innerHTML = 'There are ' + SpaceCounter + ' spaces in this text.';
+document.getElementById("row3").innerHTML = 'There are ' + SentenceCounter + ' complete sentences in this text.';
+document.getElementById("row4").innerHTML = 'There are ' + WordCounter + ' total words in this text.';
+  }
